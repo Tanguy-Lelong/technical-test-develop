@@ -1,0 +1,53 @@
+{
+  "quizzes": [
+    {
+      "name": "My quizz 1",
+      "questions": [
+        {
+          "name": "Is it a question ?",
+          "answers": [
+            {
+              "name": "yes",
+              "isCorrect": true
+            },
+            {
+              "name": "no",
+              "isCorrect": false
+            }
+          ]
+        },
+        {
+          "name": "true=true ?",
+          "answers": [
+            {
+              "name": "yes",
+              "isCorrect": true
+            },
+            {
+              "name": "no",
+              "isCorrect": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "My quizz 2",
+      "questions": [
+        {
+          "name": "Is it a question ?",
+          "answers": [
+            {
+              "name": "yes",
+              "isCorrect": true
+            },
+            {
+              "name": "no",
+              "isCorrect": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

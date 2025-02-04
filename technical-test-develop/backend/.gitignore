@@ -1,0 +1,12 @@
+.idea/
+.vscode/
+.DS_Store
+*.tgz
+template/src/__tests__/__snapshots__/
+lerna-debug.log
+npm-debug.log*
+/.changelog
+.npm/
+build/
+node_modules/
+log
