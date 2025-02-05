@@ -3,11 +3,11 @@ import { useQuizzes } from "../hooks/quiz-hook"
 import { Quiz } from "./Quiz"
 
 export const QuizList = () => {
-    const { quizzes, deleteQuiz, addQuiz } = useQuizzes()
+    const { quizzes, deleteQuiz, addQuiz, exportData } = useQuizzes()
 
     const generateHexId = () => {
         return [...Array(24)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
-      };
+    };
     const staticQuizz: IQuiz = {
         "name": "Static Quiz",
         "_id": generateHexId(),
@@ -17,18 +17,25 @@ export const QuizList = () => {
     return (
         <>
             <div style={{ display: "flex" }}>
-                Create a quiz :
+                <h6>Create a quiz :</h6>
                 <button
-                    style={{
-                        marginLeft: 5
-                    }}
-                    onClick={() => {
-                        addQuiz(staticQuizz)
-                    }}
+                    style={{ marginLeft: 5 }}
+                    onClick={() => addQuiz(staticQuizz)}
                 >
                     Add
                 </button>
             </div>
+            <div style={{ display: "flex" }}>
+                Export :
+                <button
+                    onClick={() => {
+                        exportData()
+                    }}
+                >
+                    Export
+                </button>      
+            </div>
+
             <h2>Quizzes</h2>
             <div className="list">
                 {/* // TODO : display multiple quizzes here */}
@@ -43,8 +50,7 @@ export const QuizList = () => {
                             }}
                         >
                             Delete
-                        </button>
-                    </div>
+                        </button>                    </div>
 
                 ))
                     :

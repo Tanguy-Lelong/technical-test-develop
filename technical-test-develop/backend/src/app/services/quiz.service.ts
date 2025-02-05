@@ -1,6 +1,8 @@
 import { CoreService } from '../../libs/core/core.services'
 import { IQuiz } from '../../libs/core/schemas'
 import QuizModel from '../../libs/core/schemas/quiz.schema'
+import fs from 'fs';
+import path from 'path';
 
 export class QuizService {
   #coreService: CoreService
@@ -29,4 +31,11 @@ export class QuizService {
     console.debug({ type: 'Service', method: 'quizAdd', quiz })
     return new QuizModel(quiz).save()
   }
+
+  async quizExport(): Promise<void> {
+    console.debug({ type: 'Service', method: 'quizExport' });
+    const quizzes = await QuizModel.find().lean().exec();
+    const filePath = path.resolve(__dirname, '../../../datas/quizzes.json');
+    fs.writeFileSync(filePath, JSON.stringify({ quizzes }, null, 2), 'utf-8');
+  }    
 }

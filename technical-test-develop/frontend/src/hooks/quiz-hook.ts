@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { IQuiz } from "../data-interfaces/quiz.interfaces";
-import { getQuizzes, deleteQuiz, addQuiz } from "../services/quiz-service";
+import { getQuizzes, deleteQuiz, addQuiz, exportData } from "../services/quiz-service";
 
 export const useQuizzes = () => {
   // Access the client
@@ -19,6 +19,10 @@ export const useQuizzes = () => {
     onSuccess: () => queryClient.invalidateQueries("quizzes")
   });
 
+  const exportDataMutation = useMutation(exportData, {
+    onSuccess: () => queryClient.invalidateQueries("export")
+  });
+
   return {
     quizzes: quizzesQuery.data || [],
     deleteQuiz: (quizId: string) => {
@@ -26,6 +30,9 @@ export const useQuizzes = () => {
     },
     addQuiz: (quiz: IQuiz) => {
       addQuizMutation.mutateAsync(quiz);
+    },
+    exportData: () => {
+      exportDataMutation.mutateAsync();
     }
   };
 };

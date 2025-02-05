@@ -46,3 +46,14 @@ export async function addQuiz(quiz: IQuiz): Promise<IQuiz> {
   }
   return {} as IQuiz;
 }
+
+export async function exportData(): Promise<void> {
+  const response = await fetch('http://localhost:3001/api/quizzes/export', {
+    method: "POST",
+  });
+  try {
+    if (response.ok) return;
+  } catch (e) {
+    console.error(e);
+  }
+}

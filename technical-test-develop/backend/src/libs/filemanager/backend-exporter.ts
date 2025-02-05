@@ -1,3 +1,5 @@
+import path from 'path';
+import fs from 'fs';
 import { IQuiz } from '../core/schemas'
 
 export interface IDatabaseExport {
@@ -11,5 +13,7 @@ export class BackendExporter {
   }
   async exportFiles(databaseContent: { quizzes: IQuiz[] }): Promise<void> {
     // TODO : use file utils to write databaseContent to this.#filesPath/quizzes.json
+    const filePath = path.resolve(this.#filesPath, 'quizzes.json');
+    fs.writeFileSync(filePath, JSON.stringify(databaseContent, null, 2), 'utf-8');
   }
 }

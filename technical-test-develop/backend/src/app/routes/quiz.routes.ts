@@ -25,7 +25,13 @@ export class QuizRoutes {
     )
     await router.post(
       '',
-      (req: Request, res: Response, next: NextFunction): Promise<void> => quizController.quizAdd(req, res, next))
+      (req: Request, res: Response, next: NextFunction): Promise<void> => quizController.quizAdd(req, res, next),
+    );
+    await router.post(
+      '/export',
+      (req: Request, res: Response, next: NextFunction): Promise<void> => quizController.quizExport(req, res, next),
+    );
+
     return router
   }
 }

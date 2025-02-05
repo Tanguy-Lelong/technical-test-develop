@@ -60,4 +60,19 @@ export class QuizController {
         next(err)
       })
   }
+
+  async quizExport(req: Request, res: Response, next: NextFunction): Promise<void> {
+    console.log({ type: 'Controller', method: 'quizExport', params: req.params, body: req.body })
+    await this.#quizService
+      .quizExport()
+      .then((): void => {
+        res.sendStatus(200)
+        next()
+      })
+      .catch((err: Error): void => {
+        next(err)
+      })
+  }
 }
+
+
