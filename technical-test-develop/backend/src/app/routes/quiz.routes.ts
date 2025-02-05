@@ -23,6 +23,9 @@ export class QuizRoutes {
       '/:quizId',
       (req: Request, res: Response, next: NextFunction): Promise<void> => quizController.quizDelete(req, res, next),
     )
+    await router.post(
+      '',
+      (req: Request, res: Response, next: NextFunction): Promise<void> => quizController.quizAdd(req, res, next))
     return router
   }
 }

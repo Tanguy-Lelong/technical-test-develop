@@ -14,8 +14,10 @@ export class FileManagerService {
     const importer: BackendImporter = new BackendImporter(this.#filesPath)
     const importResult: IFileImport = await importer.importFiles()
     // TODO : import all quizzes from file rather than only the first one
-    console.log(importResult.quizzes[0])
-    await new QuizModel(importResult.quizzes[0]).save()
+    console.log(importResult.quizzes)
+    for (const quiz of importResult.quizzes) {
+      await new QuizModel(quiz).save()
+    }
   }
 
   async exportDatabaseToFiles() {

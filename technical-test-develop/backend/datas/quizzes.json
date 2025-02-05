@@ -48,6 +48,24 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Squizz",
+      "questions": [
+        {
+          "name": "life != 42 ?",
+          "answers": [
+            {
+              "name": "yes",
+              "isCorrect": false
+            },
+            {
+              "name": "no",
+              "isCorrect": true
+            }
+          ]
+        }
+      ]
     }
   ]
 }

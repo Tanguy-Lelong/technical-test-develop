@@ -24,4 +24,9 @@ export class QuizService {
     console.debug({ type: 'Service', method: 'quizDelete', filter })
     await QuizModel.deleteOne(filter).exec()
   }
+
+  async quizAdd(quiz: IQuiz): Promise<IQuiz> {
+    console.debug({ type: 'Service', method: 'quizAdd', quiz })
+    return new QuizModel(quiz).save()
+  }
 }

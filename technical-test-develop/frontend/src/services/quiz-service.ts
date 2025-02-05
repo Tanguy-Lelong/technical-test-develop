@@ -27,3 +27,22 @@ export async function getQuizzes(): Promise<IQuiz[]> {
   }
   return [];
 }
+
+export async function addQuiz(quiz: IQuiz): Promise<IQuiz> {
+  const response = await fetch("http://localhost:3001/api/quizzes", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(quiz),
+  });
+  try {
+    const bodyJson = await response.json();
+    if (bodyJson && bodyJson.data) {
+      return bodyJson.data;
+    }
+  } catch (e) {
+    console.error(e);
+  }
+  return {} as IQuiz;
+}

@@ -47,4 +47,17 @@ export class QuizController {
         next(err)
       })
   }
+
+  async quizAdd(req: Request, res: Response, next: NextFunction): Promise<void> {
+    console.log({ type: 'Controller', method: 'quizAdd', params: req.params, body: req.body })
+    await this.#quizService
+      .quizAdd(req.body)
+      .then((data: IQuiz): void => {
+        res.json({ data })
+        next()
+      })
+      .catch((err: Error): void => {
+        next(err)
+      })
+  }
 }
